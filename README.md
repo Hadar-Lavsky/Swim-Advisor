@@ -28,7 +28,7 @@ cd swim-advisor
 # Install all project dependencies
 npm install
 
-# For Windows users: Install react-scripts globally (required)
+# if it doesnt work add these and then run
 npm install -g react-scripts
 ```
 
