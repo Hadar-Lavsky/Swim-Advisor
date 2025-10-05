@@ -15,17 +15,41 @@ A modern web platform helping swimmers improve their technique through curated c
 - Node.js 16+
 - npm
 
-### Installation
+### Installation and Setup
+
+1. Clone the repository:
 ```bash
-# Install dependencies
+git clone <your-repo-url>
+cd swim-advisor
+```
+
+2. Install dependencies:
+```bash
+# Install all project dependencies
 npm install
 
-# Start development server
+# For Windows users: Install react-scripts globally (required)
+npm install -g react-scripts
+```
+
+3. Start the development server:
+```bash
 npm start
 ```
 
-Visit `http://localhost:3000` to see the app.
+The app will open automatically at `http://localhost:3000`
 
+### Troubleshooting
+
+If you see "'react-scripts' is not recognized" error on Windows:
+1. Make sure you've installed react-scripts globally
+2. Try cleaning and reinstalling:
+```bash
+rm -r node_modules
+npm cache clean --force
+npm install
+npm install -g react-scripts
+```
 
 ### Frontend
 - React 18

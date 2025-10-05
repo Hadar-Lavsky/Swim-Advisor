@@ -78,7 +78,7 @@ const ContentPage = () => {
       youtubeId: "OEzOWZYSjPI",
       duration: "2:30",
       channel: "Swim Technique",
-      style: "breaststroke",
+      style: "freestyle",
       technique: "kick",
       level: "beginner",
       equipment: "none",
