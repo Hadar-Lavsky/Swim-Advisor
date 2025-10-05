@@ -39,7 +39,7 @@ const PrivacyPage = () => {
       icon: Lock,
       title: "Data Storage & Security",
       content: "All data is stored securely. Uploaded videos or personal details are not shared with third parties or advertisers.",
-      highlight: "You can request deletion of your data anytime by contacting: swimadvisor@gmail.com"
+      highlight: "You can request deletion of your data anytime by contacting: myswimadvisor@gmail.com"
     },
     {
       icon: Users,
@@ -143,11 +143,11 @@ const PrivacyPage = () => {
           For questions about this privacy policy, contact us at:
         </p>
         <a 
-          href="mailto:swimadvisor@gmail.com"
+          href="mailto:myswimadvisor@gmail.com"
           className="inline-flex items-center space-x-2 bg-white text-swim-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 shadow-lg"
         >
           <Mail size={20} />
-          <span className="text-left">swimadvisor@gmail.com</span>
+          <span className="text-left">myswimadvisor@gmail.com</span>
           </a>
       </div>
 

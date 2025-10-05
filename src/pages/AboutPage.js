@@ -55,7 +55,7 @@ const AboutPage = () => {
         {/* LinkedIn Connection */}
         <div className="flex items-center justify-center sm:justify-start">
           <a 
-            href="https://www.linkedin.com/in/your-profile" 
+            href="https://www.linkedin.com/in/hadar-lavsky-1b9970342/" 
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-swim-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-swim-blue-700 transition-colors duration-200"
@@ -106,11 +106,11 @@ const AboutPage = () => {
           Have questions or feedback? We'd love to hear from you!
         </p>
         <a 
-          href="mailto:swimadvisor@gmail.com"
+          href="mailto:myswimadvisor@gmail.com"
           className="inline-flex items-center space-x-2 bg-white text-swim-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
         >
           <Mail size={20} />
-          <span>swimadvisor@gmail.com</span>
+          <span>myswimadvisor@gmail.com</span>
         </a>
       </div>
     </div>
