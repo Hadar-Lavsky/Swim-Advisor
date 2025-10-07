@@ -33,7 +33,7 @@ const HomePage = () => {
     { 
       icon: Droplet, 
       number: '1', 
-      title: 'Water Adjustment',
+      title: 'Water Comfort',
       description: 'Getting comfortable in water'
     },
     { 
@@ -173,6 +173,15 @@ const HomePage = () => {
           </Link>
         </div>
       </div>
+    
+
+
+
+
+
+
+
+
     </div>
   );
 };

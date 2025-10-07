@@ -11,6 +11,7 @@ import PrivacyPage from './pages/PrivacyPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ComingSoonPage from './pages/ComingSoonPage';
+import FAQ from './pages/FAQ';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/privacy" element={<PrivacyPage/>} />
             <Route path="/contact" element={<ContactPage/>} />
+            <Route path="/FAQ" element={<FAQ/>} />
             <Route path="/coming-soon" element={<ComingSoonPage/>} />
             {/* Catch-all route for 404 - must be last */}
             <Route path="*" element={<NotFoundPage/>} />

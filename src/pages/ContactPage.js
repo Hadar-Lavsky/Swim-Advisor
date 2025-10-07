@@ -21,7 +21,7 @@ const ContactPage = () => {
     e.preventDefault();
     
     // Create mailto link with form data
-    const mailtoLink = `mailto:swimadvisor@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
+    const mailtoLink = `mailto:myswimadvisor@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(
       `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
     )}`;
     
@@ -173,11 +173,11 @@ const ContactPage = () => {
                   Prefer to send an email yourself? Reach out directly:
                 </p>
                 <a
-                  href="mailto:swimadvisor@gmail.com"
+                  href="mailto:myswimadvisor@gmail.com"
                   className="inline-flex items-center space-x-2 text-swim-blue-600 font-semibold hover:text-swim-blue-700 transition-colors duration-200"
                 >
                   <Mail size={18} />
-                  <span>swimadvisor@gmail.com</span>
+                  <span>myswimadvisor@gmail.com</span>
                 </a>
               </div>
             </div>
