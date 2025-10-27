@@ -27,6 +27,25 @@ module.exports = {
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
       },
+      animation: {
+        'fadeIn': 'fadeIn 0.3s ease-in-out',
+        'scaleIn': 'scaleIn 0.3s ease-out',
+        'spin': 'spin 1s linear infinite',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0', transform: 'translateY(-10px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        scaleIn: {
+          '0%': { opacity: '0', transform: 'scale(0.9)' },
+          '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      },
     },
   },
   plugins: [],

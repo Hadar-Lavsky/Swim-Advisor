@@ -21,12 +21,12 @@ const AskPenguinPage = () => {
         answer: "It varies from child to child, but generally around age 6 kids can start learning basic strokes. Between ages 7–9, children develop better balance and coordination in water, which helps them focus and learn technique more effectively."
       },
       {
-        question: "My child has a trauma or fear of the pool — what should I do?",
+        question: "My child has a trauma or fear of the pool  what should I do?",
         answer: "Trauma and fear need personal attention and professional guidance. Start with private lessons and a patient instructor who can rebuild confidence step by step."
       },
       {
-        question: "I want my child to improve faster — what can we do at home?",
-        answer: "Encourage your child and keep swimming fun. Try simple dry-land drills at home like arm movements, balance games, or breathing control exercises."
+        question: "I want my child to improve faster  what can we do at home?",
+        answer: "Encourage your child and keep swimming fun. Try simple dry land drills at home like arm movements, balance games, or breathing control exercises."
       }
     ],
     swimmers: [
@@ -44,7 +44,7 @@ const AskPenguinPage = () => {
       },
       {
         question: "Why should I learn swimming?",
-        answer: "Swimming builds strength, coordination, and confidence, improves heart and lung health, and is a low-impact full-body workout perfect for all ages."
+        answer: "Swimming builds strength, coordination, and confidence, improves heart and lung health, and is a low impact full body workout perfect for all ages."
       }
     ],
     general: [
@@ -62,7 +62,7 @@ const AskPenguinPage = () => {
       },
       {
         question: "What's coming next?",
-        answer: "The upcoming Swim Analyzer for real-time stroke feedback plus personal swim plans and community Q&A."
+        answer: "The upcoming Swim Analyzer for real time stroke feedback plus personal swim plans and community Q&A."
       }
     ]
   };
