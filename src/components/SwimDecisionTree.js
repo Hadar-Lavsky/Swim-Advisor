@@ -50,37 +50,24 @@ const SwimDecisionTree = ({ onComplete }) => {
       color: "from-cyan-300 to-teal-400",
       goal: "Balance & Gliding Program"
     },
-    beginnerBreaststroke: {
-      title: "Beginner Breaststroke Program",
-      description: "Start with breaststroke - a natural, rhythmic stroke. You'll learn proper kick technique, timing, and breathing patterns.",
-      icon: Target,
-      color: "from-emerald-400 to-green-500",
-      goal: "Beginner Breaststroke Program"
-    },
-    beginnerFreestyle: {
-      title: "Beginner Freestyle Program",
-      description: "Begin your journey with freestyle - the most versatile and efficient stroke. Perfect for building confidence and endurance.",
-      icon: Waves,
-      color: "from-blue-400 to-indigo-500",
-      goal: "Beginner Freestyle Program"
-    },
+    
     movementKickingFreestyle: {
-      title: "Movement & Kicking Drills Program",
+      title: "Movement freestyle Program",
       description: "Build fundamental propulsion through basic kicking and movement patterns. Get comfortable moving through the water.",
       icon: Droplets,
       color: "from-violet-400 to-purple-500",
-      goal: "Movement & Kicking Drills Program"
+      goal: "Movement freestyle Program"
     },
     movementKickingBreaststroke: {
-      title: "Movement & Kicking Drills Program breaststroke",
+      title: "Breaststroke Movement Program",
       description: "Build fundamental propulsion through basic kicking and movement patterns. Get comfortable moving through the water.",
       icon: Droplets,
       color: "from-violet-400 to-purple-500",
-      goal: "Movement & Kicking Drills Program breaststroke"
+      goal: "Breaststroke Movement Program"
     },
     
     coordinationBreathingFreestyle: {
-      title: "Coordination & Breathing Program",
+      title: "Coordination & Breathing Freestyle Program",
       description: "Combine movement with breathing technique. You're almost there - let's put it all together for confident swimming!",
       icon: Target,
       color: "from-pink-400 to-rose-500",

@@ -41,7 +41,63 @@ const ExercisePage = () => {
         { name: "Streamline Position", time: "4×5 m" },
         { name: "Diving Toys", time: "5 min" }
       ]
-    }
+    },
+    "Breaststroke Movement Program": {
+  name: "Breaststroke Movement Program",
+  awareness: [
+    "Move legs slowly and smoothly, feeling the full circle of each rotation."
+  ],
+  blocks: [
+    { name: "Dryland Coordination Drills", time: "10 min" },
+    { name: "Leg Kicks (with Kickboard + Noodle)", time: "15 min" },
+    { name: "Streamline Kick Practice", time: "5 min" },
+    { name: "Streamline + Glide", time: "5 min" },
+    { name: "Diving Toys", time: "5 min" }
+  ]
+},
+
+"Movement freestyle Program": {
+  name: "Movement freestyle Program",
+  awareness: [
+    "Keep the body narrow, flat, and level on the water."
+  ],
+  blocks: [
+    { name: "Dry-leg Drill", time: "5 min" },
+    { name: "Back Float", time: "10 min" },
+    { name: "Back Kick", time: "10 min" },
+    { name: "Rotation (Star ↔ Back)", time: "10 min" },
+    { name: "Sculling Swim", time: "5 min" }
+  ]
+},
+
+"Coordination & Breathing Program breaststroke": {
+  name: "Coordination & Breathing Program breaststroke",
+  awareness: [
+    "try to breathe each stroke and rest while streamline after kick."
+  ],
+  blocks: [
+    { name: "Leg Kicks (with Kickboard + Noodle)", time: "10 min" },
+    { name: "breastroke swin(with noodle)", time: "15 min" },
+    { name: "stramline with 2-3 strokes", time: "5 min" },
+    { name: "breastroke 2 kicks each stroke", time: "5 min" },
+    { name: "Diving Toys", time: "5 min" }
+  ]
+},
+"Coordination & Breathing Program": {
+  name: "Coordination & Breathing Program",
+  awareness: [
+    "Keep the body narrow, flat, and level on the water."
+  ],
+  blocks: [
+    { name: "Dryland Coordination Drills", time: "10 min" },
+    { name: "Leg Kicks (with Kickboard + Noodle)", time: "15 min" },
+    { name: "Streamline Kick Practice", time: "5 min" },
+    { name: "Streamline + Glide", time: "5 min" },
+    { name: "Diving Toys", time: "5 min" }
+  ]
+},
+
+
   };
 
   // Default program for all other users
@@ -70,6 +126,16 @@ const ExercisePage = () => {
       selectedExercise = exercisesByLevel["Water Confidence Program"];
     } else if (profile.goal.includes("Balance & Gliding")) {
       selectedExercise = exercisesByLevel["Balance & Gliding Program"];
+    }
+    else if (profile.goal.includes("Breaststroke Movement")) {
+      selectedExercise = exercisesByLevel["Breaststroke Movement Program"];
+    } 
+    else if (profile.goal.includes("Movement freestyle")) {
+      selectedExercise = exercisesByLevel["Movement freestyle Program"];
+    } else if (profile.goal.includes("Coordination & Breathing Program breaststroke")) {
+      selectedExercise = exercisesByLevel["Coordination & Breathing Program breaststroke"];
+    } else if (profile.goal.includes("Coordination & Breathing Program")) {
+      selectedExercise = exercisesByLevel["Coordination & Breathing Program"];
     }
   }
 
