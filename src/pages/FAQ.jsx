@@ -14,7 +14,7 @@ const AskPenguinPage = () => {
     parents: [
       {
         question: "How do I choose the right goggles for my child?",
-        answer: "You can buy any decent brand, but the most important thing is fit and comfort. The goggles should cover the eyes exactly — not press too tight and not too wide. Make sure your child feels comfortable."
+        answer: "You can buy any decent brand, but the most important thing is fit and comfort. The goggles should cover the eyes exactly  not press too tight and not too wide. Make sure your child feels comfortable."
       },
       {
         question: "At what age should my child start learning to swim?",
@@ -50,7 +50,7 @@ const AskPenguinPage = () => {
     general: [
       {
         question: "What is Swim Advisor?",
-        answer: "Just swim smarter — structured guidance, and instructor insights."
+        answer: "Just swim smarter  structured guidance, and instructor insights."
       },
       {
         question: "What is the goal of Swim Advisor?",

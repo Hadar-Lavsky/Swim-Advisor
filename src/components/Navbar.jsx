@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Home, Youtube, Wrench, Video, Menu, X, User, LogOut, LogIn, Loader2, WavesLadder   } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
