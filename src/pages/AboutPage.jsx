@@ -1,10 +1,10 @@
 import React from 'react';
-import { Mail, Linkedin, Youtube, Wrench, WavesLadder } from 'lucide-react';
+import { Mail, UserPlus, TvMinimalPlay, Wrench, WavesLadder } from 'lucide-react';
 
-const AboutPage = () => {
+const AboutPage = () => { 
   const services = [
     {
-      icon: Youtube,
+      icon: TvMinimalPlay,
       title: 'Video Content Library',
       
     },
@@ -60,7 +60,7 @@ const AboutPage = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-swim-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-swim-blue-700 transition-colors duration-200"
           >
-            <Linkedin size={20} />
+            <UserPlus size={20} />
             <span>Connect on LinkedIn</span>
           </a>
         </div>
