@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp, Mail } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import ContactUs from '../components/ContactUs';
 
 const AskPenguinPage = () => {
   const [activeTab, setActiveTab] = useState('parents');
@@ -165,24 +166,10 @@ const AskPenguinPage = () => {
         </div>
       </div>
 
-      {/* Contact CTA */}
-      <div className="max-w-3xl mx-auto mb-12">
-        <div className="bg-gradient-to-r from-swim-blue-600 to-swim-blue-700 rounded-2xl p-8 text-center text-white shadow-xl">
-          <h3 className="text-2xl font-bold mb-3">
-            Didn't find what you were looking for?
-          </h3>
-          <p className="text-lg mb-6 opacity-90">
-            Feel free to reach out to us directly
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center space-x-2 bg-white text-swim-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-          >
-            <Mail size={20} />
-            <span>Contact Us</span>
-          </Link>
-        </div>
-      </div>
+      {/* Contact Section */}
+      <ContactUs 
+        title="Contact Us"
+        description="For questions about this privacy policy, contact us at:"/>
     </div>
   );
 };

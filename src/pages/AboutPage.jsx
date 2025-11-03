@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, UserPlus, TvMinimalPlay, Wrench, WavesLadder } from 'lucide-react';
+import { UserPlus, TvMinimalPlay, Wrench, WavesLadder } from 'lucide-react';
+import ContactUs from '../components/ContactUs';
 
 const AboutPage = () => { 
   const services = [
@@ -100,19 +101,7 @@ const AboutPage = () => {
       </div>
 
       {/* Section 4 - Contact Us */}
-      <div className="bg-gradient-to-r from-swim-blue-600 to-swim-blue-700 rounded-xl shadow-lg p-8 sm:p-12 mb-12 text-center text-white">
-        <h2 className="text-3xl font-bold mb-6">Contact Us</h2>
-        <p className="text-lg mb-6 opacity-90">
-          Have questions or feedback? We'd love to hear from you!
-        </p>
-        <a 
-          href="mailto:myswimadvisor@gmail.com"
-          className="inline-flex items-center space-x-2 bg-white text-swim-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-        >
-          <Mail size={20} />
-          <span>myswimadvisor@gmail.com</span>
-        </a>
-      </div>
+      <ContactUs />
     </div>
   );
 };
