@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Send, MessageCircle, CheckCircle } from 'lucide-react';
 import PageHeader from '../components/PageHeader';
+import SectionCard from '../components/SectionCard';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -49,10 +50,7 @@ const ContactPage = () => {
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         {/* Contact Form */}
-        <div className="bg-white rounded-xl shadow-lg p-8">
-          <h2 className="text-2xl font-bold text-penguin-dark mb-6">
-            Send us a Message
-          </h2>
+        <SectionCard title="Send us a Message" padding="p-8" titleSize="text-2xl">
 
           {isSubmitted ? (
             <div className="py-12 text-center">
@@ -147,20 +145,17 @@ const ContactPage = () => {
               </p>
             </form>
           )}
-        </div>
+        </SectionCard>
 
         {/* Contact Information */}
         <div className="space-y-6">
           {/* Direct Email */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
+          <SectionCard title="Email Us Directly" padding="p-8" titleSize="text-xl" className="mb-0">
             <div className="flex items-start space-x-4">
               <div className="flex-shrink-0 p-3 bg-swim-blue-100 rounded-lg">
                 <Mail className="w-6 h-6 text-swim-blue-600" />
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-penguin-dark mb-2">
-                  Email Us Directly
-                </h3>
                 <p className="text-gray-600 mb-4">
                   Prefer to send an email yourself? Reach out directly:
                 </p>
@@ -173,7 +168,7 @@ const ContactPage = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </SectionCard>
 
           {/* What to Expect */}
           <div className="bg-gradient-to-br from-swim-blue-50 to-swim-blue-100 rounded-xl p-8">
@@ -203,10 +198,7 @@ const ContactPage = () => {
           </div>
 
           {/* Common Topics */}
-          <div className="bg-white rounded-xl shadow-lg p-8">
-            <h3 className="text-xl font-semibold text-penguin-dark mb-4">
-              Common Topics
-            </h3>
+          <SectionCard title="Common Topics" padding="p-8" titleSize="text-xl" className="mb-0">
             <div className="flex flex-wrap gap-2">
               <span className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm">
                 Technical Support
@@ -224,7 +216,7 @@ const ContactPage = () => {
                 General Questions
               </span>
             </div>
-          </div>
+          </SectionCard>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Search, Filter, Clock,} from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import VideoCard from '../components/VideoCard';
 import FilterPanel from '../components/FilterPanel';
+import PageHeader from '../components/PageHeader';
 
 const ContentPage = () => {
   const [videos, setVideos] = useState([]);
@@ -250,15 +251,10 @@ const ContentPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-16 px-4">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-penguin-dark mb-4">
-          Swimming Video Library
-        </h1>
-        <p className="text-xl text-gray-600">
-          Discover curated YouTube videos to improve your swimming technique
-        </p>
-      </div>
+      <PageHeader
+        title="Swimming Video Library"
+        description="Discover curated YouTube videos to improve your swimming technique"
+      />
 
       {/* Search and Filter Bar */}
       <div className="bg-white rounded-xl shadow-lg p-6 mb-8">

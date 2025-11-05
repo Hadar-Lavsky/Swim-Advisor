@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Search, Filter, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SectionCard from '../components/SectionCard';
+import PageHeader from '../components/PageHeader';
 
 const LearnPage = () => {
   const [problems, setProblems] = useState([]);
@@ -157,15 +159,10 @@ const LearnPage = () => {
 
   return (
     <div className="max-w-7xl mx-auto mt-16 px-4">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-penguin-dark mb-4">
-          Common Swimming Problems
-        </h1>
-        <p className="text-xl text-gray-600">
-          Learn simple solutions to improve your swimming technique
-        </p>
-      </div>
+      <PageHeader
+        title="Common Swimming Problems"
+        description="Learn simple solutions to improve your swimming technique"
+      />
 
       {/* Search and Filter Bar - ContentPage Style */}
       <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
@@ -245,7 +242,11 @@ const LearnPage = () => {
       {filteredProblems.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           {filteredProblems.map(problem => (
-            <div key={problem.id} className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-200">
+            <SectionCard 
+              key={problem.id} 
+              padding="p-6" 
+              className="hover:shadow-xl transition-shadow duration-200"
+            >
               {/* Title */}
               <h3 className="text-xl font-semibold text-penguin-dark mb-3">
                 {problem.title}
@@ -285,7 +286,7 @@ const LearnPage = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </SectionCard>
           ))}
         </div>
       ) : (

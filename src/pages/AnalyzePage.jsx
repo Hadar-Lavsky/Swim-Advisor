@@ -4,6 +4,8 @@ import VideoUpload from '../components/VideoUpload';
 import VideoPreview from '../components/VideoPreview';
 import AnalysisResults from '../components/AnalysisResults';
 import { analyzeVideo } from '../api/analyzeVideo';
+import SectionCard from '../components/SectionCard';
+import PageHeader from '../components/PageHeader';
 
 const AnalyzePage = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -65,16 +67,11 @@ const AnalyzePage = () => {
   const analysisStep = getAnalysisStep();
 
   return (
-    <div className="max-w-6xl mx-auto">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-penguin-dark mb-4">
-          AI Swimming Analysis
-        </h1>
-        <p className="text-xl text-gray-600">
-          Upload your swimming video for AI-powered technique analysis and personalized feedback
-        </p>
-      </div>
+    <div className="max-w-6xl mx-auto mt-16 px-4">
+      <PageHeader
+        title="AI Swimming Analysis"
+        description="Upload your swimming video for AI-powered technique analysis and personalized feedback"
+      />
 
       {/* Progress Steps */}
       <div className="flex justify-center mb-8">
@@ -212,10 +209,7 @@ const AnalyzePage = () => {
             <AnalysisResults results={analysisResults} />
           ) : (
             /* Info Panel */
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h3 className="text-xl font-semibold text-penguin-dark mb-4">
-                How It Works
-              </h3>
+            <SectionCard title="How It Works" padding="p-6" titleSize="text-xl">
               
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
@@ -277,7 +271,7 @@ const AnalyzePage = () => {
                   and OpenCV for video processing will provide real-time swimming analysis.
                 </p>
               </div>
-            </div>
+            </SectionCard>
           )}
         </div>
       </div>

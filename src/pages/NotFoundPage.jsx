@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import notFoundImage from '../images/404.png';
+import SectionCard from '../components/SectionCard';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const NotFoundPage = () => {
         </div>
 
         {/* Error Message */}
-        <div className="bg-white rounded-xl shadow-lg p-8 mb-6">
+        <SectionCard padding="p-8" className="mb-6">
           <h1 className="text-6xl font-bold text-swim-blue-600 mb-4">Error</h1>
           <h2 className="text-3xl font-bold text-penguin-dark mb-4">
             Lost at Sea
@@ -43,7 +44,7 @@ const NotFoundPage = () => {
             <Home size={24} />
             <span>Return to Shore </span>
           </button>
-        </div>
+        </SectionCard>
 
         
       </div>

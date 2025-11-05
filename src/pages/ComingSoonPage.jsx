@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Home } from 'lucide-react';
 import comingSoonImage from '../images/soon.png';
+import SectionCard from '../components/SectionCard';
 
 const ComingSoonPage = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ const ComingSoonPage = () => {
         </div>
 
         {/* Coming Soon Message */}
-        <div className="bg-white rounded-xl shadow-lg p-4 mb-4">
+        <SectionCard padding="p-4" className="mb-4">
          
           
           <p className="text-gray-500 mb-8">
@@ -40,7 +41,7 @@ const ComingSoonPage = () => {
             <Home size={24} />
             <span>Return Home</span>
           </button>
-        </div>
+        </SectionCard>
 
         
       </div>

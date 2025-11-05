@@ -2,6 +2,7 @@ import React from 'react';
 import { UserPlus, TvMinimalPlay, Wrench, WavesLadder } from 'lucide-react';
 import ContactUs from '../components/ContactUs';
 import PageHeader from '../components/PageHeader';
+import SectionCard from '../components/SectionCard';
 
 const AboutPage = () => { 
   const services = [
@@ -32,17 +33,15 @@ const AboutPage = () => {
       />
 
       {/* Section 1 - Our Goal */}
-      <div className="bg-white rounded-xl shadow-lg p-8 sm:p-12 mb-8">
-        <h2 className="text-3xl font-bold text-penguin-dark mb-6">Our Goal</h2>
+      <SectionCard title="Our Goal">
         <p className="text-lg text-gray-700 leading-relaxed">
           Our mission is to provide simple, structured knowledge of swimming filtered and 
           organized by instructors  so learners can focus on what truly matters.
         </p>
-      </div>
+      </SectionCard>
 
       {/* Section 2 - Who We Are */}
-      <div className="bg-white rounded-xl shadow-lg p-8 sm:p-12 mb-8">
-        <h2 className="text-3xl font-bold text-penguin-dark mb-6">Who We Are</h2>
+      <SectionCard title="Who We Are">
         <p className="text-lg text-gray-700 leading-relaxed mb-6">
           Swim Advisor was created by a swim instructor and computer science student passionate 
           about merging coaching experience with technology.
@@ -64,13 +63,10 @@ const AboutPage = () => {
             <span>Connect on LinkedIn</span>
           </a>
         </div>
-      </div>
+      </SectionCard>
 
       {/* Section 3 - What We Provide */}
-      <div className="bg-white rounded-xl shadow-lg p-8 sm:p-12 mb-8">
-        <h2 className="text-3xl font-bold text-penguin-dark mb-8 text-center">
-          What We Provide
-        </h2>
+      <SectionCard title="What We Provide" titleClassName="text-center">
         
         <div className="grid md:grid-cols-3 gap-6">
           {services.map((service, index) => (
@@ -97,7 +93,7 @@ const AboutPage = () => {
             </div>
           ))}
         </div>
-      </div>
+      </SectionCard>
 
       {/* Section 4 - Contact Us */}
       <ContactUs />
