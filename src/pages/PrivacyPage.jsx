@@ -1,6 +1,7 @@
 import React from 'react';
 import { Shield, Lock, Eye, Users, FileText, AlertCircle } from 'lucide-react';
 import ContactUs from '../components/ContactUs';
+import PageHeader from '../components/PageHeader';
 
 const PrivacyPage = () => {
   const sections = [
@@ -60,23 +61,12 @@ const PrivacyPage = () => {
 
   return (
     <div className="max-w-4xl mx-auto mt-16 px-4 pb-12">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <div className="flex justify-center mb-4">
-          <div className="p-4 bg-swim-blue-100 rounded-full">
-            <Shield className="w-12 h-12 text-swim-blue-600" />
-          </div>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-penguin-dark mb-4">
-          Privacy Policy
-        </h1>
-        <p className="text-lg text-gray-600">
-          Swim Advisor Your Privacy Matters
-        </p>
-        <p className="text-sm text-gray-500 mt-2">
-          Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-        </p>
-      </div>
+      <PageHeader
+        icon={Shield}
+        title="Privacy Policy"
+        description="Swim Advisor Your Privacy Matters"
+        subtitle={`Last updated: ${new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}`}
+      />
 
       {/* Content Sections - Vertical Layout */}
       <div className="space-y-6 mb-12">
@@ -133,8 +123,7 @@ const PrivacyPage = () => {
       {/* Contact Section */}
       <ContactUs 
         title="Contact Us"
-        description="For questions about this privacy policy, contact us at:"
-      />
+        description="For questions about this privacy policy, contact us at:"/>
 
       {/* Additional Info */}
       <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import ContactUs from '../components/ContactUs';
+import PageHeader from '../components/PageHeader';
 
 const AskPenguinPage = () => {
   const [activeTab, setActiveTab] = useState('parents');
@@ -72,16 +73,12 @@ const AskPenguinPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto mt-8 px-4">
-      {/* Hero Section with Penguin */}
-      <div className="text-center mb-12 mt-12">
-        <div className="flex justify-center mb-6">
-          
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-penguin-dark mb-4">
-          Ask the Penguin
-        </h1>
-        
-      </div>
+      <PageHeader
+        title="Ask the Penguin"
+        titleSize="large"
+        showIcon={false}
+        className="mt-12"
+      />
 
       {/* Tabs */}
       <div className="mb-8">

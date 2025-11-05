@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Mail, Send, MessageCircle, CheckCircle } from 'lucide-react';
+import PageHeader from '../components/PageHeader';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -40,20 +41,11 @@ const ContactPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto mt-16 px-4">
-      {/* Header */}
-      <div className="text-center mb-12">
-        <div className="flex justify-center mb-4">
-          <div className="p-4 bg-swim-blue-100 rounded-full">
-            <MessageCircle className="w-12 h-12 text-swim-blue-600" />
-          </div>
-        </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-penguin-dark mb-4">
-          Contact Us
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Have questions, feedback, or suggestions? We'd love to hear from you!
-        </p>
-      </div>
+      <PageHeader
+        icon={MessageCircle}
+        title="Contact Us"
+        description="Have questions, feedback, or suggestions? We'd love to hear from you!"
+      />
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         {/* Contact Form */}

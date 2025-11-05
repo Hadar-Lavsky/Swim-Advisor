@@ -1,6 +1,7 @@
 import React from 'react';
 import { UserPlus, TvMinimalPlay, Wrench, WavesLadder } from 'lucide-react';
 import ContactUs from '../components/ContactUs';
+import PageHeader from '../components/PageHeader';
 
 const AboutPage = () => { 
   const services = [
@@ -22,15 +23,13 @@ const AboutPage = () => {
 
   return (
     <div className="max-w-5xl mx-auto mt-16">
-      {/* Header Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-penguin-dark mb-6">
-          About Swim Advisor
-        </h1>
-        <p className="text-xl sm:text-2xl text-swim-blue-600 font-medium max-w-3xl mx-auto px-4">
-          Learn swimming the smart way efficient, simple.
-        </p>
-      </div>
+      <PageHeader
+        title="About Swim Advisor"
+        description="Learn swimming the smart way efficient, simple."
+        titleSize="large"
+        descriptionColor="blue"
+        bottomMargin="mb-16"
+      />
 
       {/* Section 1 - Our Goal */}
       <div className="bg-white rounded-xl shadow-lg p-8 sm:p-12 mb-8">
@@ -57,7 +56,7 @@ const AboutPage = () => {
         <div className="flex items-center justify-center sm:justify-start">
           <a 
             href="https://www.linkedin.com/in/hadar-lavsky-1b9970342/" 
-            WavesLadder="_blank"
+            target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center space-x-2 bg-swim-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-swim-blue-700 transition-colors duration-200"
           >
