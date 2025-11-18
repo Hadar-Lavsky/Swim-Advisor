@@ -1,25 +1,21 @@
-# 🏊‍♂️ Swim Advisor
+#  Swim Advisor
 
 A modern web platform helping swimmers improve their technique through personalized learning paths, curated content, and future AI-powered video analysis.
 
-## ✨ Features
+## Features
 
 ### Current Features (v1.0)
-- **🔐 User Authentication**: Secure Google OAuth sign-in
-- **👤 User Profiles**: Personalized swimming profiles with goal setting
-- **🌊 Smart Decision Tree**: Interactive questionnaire to find your perfect swimming program
-- **📚 Content Library**: Curated swimming videos with smart filtering
-- **🎯 Learning Paths**: Structured approach to swimming fundamentals
-- **🎓 Problem Solving**: Common swimming issues with practical solutions
+- **User Authentication**: Secure Google OAuth sign-in
+- **User Profiles**: Personalized swimming profiles with goal setting
+- **Content Library**: Curated swimming videos with smart filtering
+- **Learning Paths**: Structured approach to swimming fundamentals
+- **Problem Solving**: Common swimming issues with practical solutions
 
 ### Coming Soon
-- **🎥 AI Video Analysis**: Upload swimming videos for AI-powered technique feedback
-- **📊 Progress Tracking**: Monitor your improvement over time
-- **👥 Social Features**: Connect with coaches and other swimmers
+- **AI Video Analysis**: Upload swimming videos for AI-powered technique feedback
+- **Progress Tracking**: Monitor your improvement over time
+- **Social Features**: Connect with coaches and other swimmers
 
-## 🚀 Quick Start
-
-**New to the project?** Check out our detailed [Quick Start Guide](docs/QUICK_START.md) for complete setup instructions!
 
 ### Prerequisites
 - Node.js 16+
@@ -40,7 +36,7 @@ npm install
    - Create a Supabase project at [supabase.com](https://supabase.com)
    - Run the database migration: `supabase/migrations/001_initial_setup.sql`
    - Enable Google OAuth provider
-   - See [supabase/README.md](supabase/README.md) for details
+   -
 
 3. **Configure environment**:
 ```bash
@@ -53,15 +49,7 @@ cp env.example .env.local
 npm start
 ```
 
-Visit `http://localhost:3000` 🎉
-
-## 📚 Documentation
-
-- **[Quick Start Guide](docs/QUICK_START.md)** - Get up and running in 5 minutes
-- **[Backend Architecture](docs/BACKEND_ARCHITECTURE.md)** - Detailed backend documentation
-- **[Supabase Setup](supabase/README.md)** - Database and authentication setup
-
-## 🏗️ Tech Stack
+Visit `http://localhost:3000`
 
 ### Frontend
 - **React 18** - UI framework
@@ -79,7 +67,5 @@ Visit `http://localhost:3000` 🎉
 - **Google OAuth** - Secure authentication
 
 ### Infrastructure
-- **Vercel** - Frontend hosting (recommended)
+- **Vercel** - Frontend hosting 
 - **Supabase Cloud** - Backend hosting
-
-## 📁 Project Structure
