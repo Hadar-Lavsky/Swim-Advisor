@@ -18,64 +18,53 @@ const API_BASE_URL = process.env.REACT_APP_VISION_API_URL || 'http://localhost:8
  * @param {Function} onProgress - Progress callback (percent, stage)
  * @returns {Promise<Object>} Analysis results with YOLO detections and OpenCV conclusions
  */
-export const analyzeVideoWithVision = async (videoFile, onProgress) => {
-  try {
-    const formData = new FormData();
-    formData.append('video', videoFile);
-    formData.append('model_path', 'model.pt'); // YOLO model path
-    formData.append('analysis_type', 'yolo_opencv');
+export const analyzeVideoWithVision = (videoFile, onProgress) => {
+  const formData = new FormData();
+  formData.append('video', videoFile);
+  formData.append('model_path', 'model.pt');
+  formData.append('analysis_type', 'yolo_opencv');
 
-    // Use XMLHttpRequest for progress tracking
-    return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
 
-      // Track upload progress
-      xhr.upload.addEventListener('progress', (event) => {
-        if (event.lengthComputable) {
-          const uploadPercent = (event.loaded / event.total) * 50; // Upload is 50% of total
-          onProgress?.(uploadPercent, 'Uploading video...');
-        }
-      });
-
-      // Track processing progress (if backend sends progress updates)
-      xhr.addEventListener('progress', (event) => {
-        if (event.lengthComputable) {
-          const processPercent = 50 + (event.loaded / event.total) * 50; // Processing is remaining 50%
-          onProgress?.(processPercent, 'Processing frames...');
-        }
-      });
-
-      xhr.addEventListener('load', () => {
-        if (xhr.status === 200) {
-          try {
-            const results = JSON.parse(xhr.responseText);
-            onProgress?.(100, 'Analysis complete!');
-            resolve(results);
-          } catch (error) {
-            reject(new Error('Failed to parse response from server'));
-          }
-        } else {
-          reject(new Error(`Analysis failed: ${xhr.statusText} (${xhr.status})`));
-        }
-      });
-
-      xhr.addEventListener('error', () => {
-        reject(new Error('Network error: Failed to connect to vision analysis server'));
-      });
-
-      xhr.addEventListener('timeout', () => {
-        reject(new Error('Request timeout: Analysis took too long'));
-      });
-
-      xhr.timeout = 300000; // 5 minutes timeout for video processing
-      xhr.open('POST', `${API_BASE_URL}/api/vision/analyze`);
-      xhr.send(formData);
+    xhr.upload.addEventListener('progress', (event) => {
+      if (event.lengthComputable) {
+        onProgress?.((event.loaded / event.total) * 50, 'Uploading video...');
+      }
     });
 
-  } catch (error) {
-    console.error('❌ Vision analysis failed:', error);
-    throw new Error(`Failed to analyze video: ${error.message}`);
-  }
+    xhr.addEventListener('progress', (event) => {
+      if (event.lengthComputable) {
+        onProgress?.(50 + (event.loaded / event.total) * 50, 'Processing frames...');
+      }
+    });
+
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        try {
+          const results = JSON.parse(xhr.responseText);
+          onProgress?.(100, 'Analysis complete!');
+          resolve(results);
+        } catch {
+          reject(new Error('Failed to parse response from server'));
+        }
+      } else {
+        reject(new Error(`Analysis failed: ${xhr.statusText} (${xhr.status})`));
+      }
+    });
+
+    xhr.addEventListener('error', () => {
+      reject(new Error('Network error: Failed to connect to vision analysis server'));
+    });
+
+    xhr.addEventListener('timeout', () => {
+      reject(new Error('Request timeout: Analysis took too long'));
+    });
+
+    xhr.timeout = 300000;
+    xhr.open('POST', `${API_BASE_URL}/api/vision/analyze`);
+    xhr.send(formData);
+  });
 };
 
 /**
@@ -216,6 +205,40 @@ export const mockVisionAnalysis = async (videoFile, onProgress) => {
         'Color analysis indicates good lighting conditions'
       ]
     },
+
+    // Detected Swimming Problems (similar to Fixes page)
+    detected_problems: [
+      {
+        id: 3,
+        title: "Legs Sink in Freestyle",
+        style: "freestyle",
+        description: "When you push off the wall, your legs sink down, creating drag and slowing you down.",
+        solutions: [
+          "Use a proper kick (from hips) and avoid stiff knees",
+          "Think of your legs like two sticks moving up and down close together",
+          "Press your chest down slightly to lift your hips"
+        ],
+        relatedVideos: [
+          { title: "Flutter Kick", youtubeId: "OEzOWZYSjPI" }
+        ],
+        confidence: 0.75
+      },
+      {
+        id: 4,
+        title: "Poor Freestyle Arm Entry",
+        style: "freestyle",
+        description: "Your hand enters the water incorrectly, causing splash and reducing efficiency.",
+        solutions: [
+          "Enter hand fingertips first, in line with your shoulder",
+          "Reach forward fully before pulling back",
+          "Keep your elbow higher than your hand during recovery"
+        ],
+        relatedVideos: [
+          { title: "Freestyle Arm Entry", youtubeId: "OHjzgwUtfvU" }
+        ],
+        confidence: 0.65
+      }
+    ],
 
     // Performance Metrics
     processing_metrics: {

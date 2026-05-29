@@ -9,6 +9,7 @@ Usage:
     uvicorn backend_example:app --reload --port 8000
 """
 
+from contextlib import asynccontextmanager
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -21,24 +22,11 @@ from typing import Optional
 import time
 from datetime import datetime
 
-app = FastAPI(title="Swim Advisor Vision API")
-
-# CORS middleware to allow React frontend to connect
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:3001"],  # React dev server
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
-# Load YOLO model once at startup
-MODEL_PATH = "model.pt"  # Path to your YOLO model file
+MODEL_PATH = "model.pt"
 yolo_model = None
 
-@app.on_event("startup")
-async def load_model():
-    """Load YOLO model on startup"""
+@asynccontextmanager
+async def lifespan(app: FastAPI):
     global yolo_model
     try:
         if os.path.exists(MODEL_PATH):
@@ -48,6 +36,17 @@ async def load_model():
             print(f"⚠️  Warning: {MODEL_PATH} not found. Using placeholder.")
     except Exception as e:
         print(f"❌ Error loading YOLO model: {e}")
+    yield
+
+app = FastAPI(title="Swim Advisor Vision API", lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://localhost:3001"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 def extract_frames_opencv(video_path: str, fps: Optional[int] = None) -> list:
     """
@@ -212,6 +211,94 @@ def analyze_with_opencv(frames: list) -> dict:
         }
     }
 
+def detect_swimming_problems(yolo_results: dict, opencv_results: dict, frame_height: int = 480) -> list:
+    """
+    Detect specific swimming problems based on YOLO and OpenCV analysis
+    
+    Returns list of detected problems with solutions (similar to Fixes page)
+    """
+    problems = []
+    
+    # Problem 1: Legs Sink in Freestyle
+    avg_bbox_y = calculate_average_bbox_y(yolo_results.get("detections", []), frame_height)
+    if avg_bbox_y > 0.6:  # Lower 40% of frame
+        problems.append({
+            "id": 3,
+            "title": "Legs Sink in Freestyle",
+            "style": "freestyle",
+            "description": "When you push off the wall, your legs sink down, creating drag and slowing you down.",
+            "solutions": [
+                "Use a proper kick (from hips) and avoid stiff knees",
+                "Think of your legs like two sticks moving up and down close together",
+                "Press your chest down slightly to lift your hips"
+            ],
+            "relatedVideos": [
+                {"title": "Flutter Kick", "youtubeId": "OEzOWZYSjPI"}
+            ],
+            "confidence": min(avg_bbox_y * 1.2, 1.0)
+        })
+    
+    # Problem 2: Poor Freestyle Arm Entry
+    edge_density = opencv_results.get("edge_detection", {}).get("edge_density", 0)
+    if edge_density > 0.2:  # High edge density suggests splash
+        problems.append({
+            "id": 4,
+            "title": "Poor Freestyle Arm Entry",
+            "style": "freestyle",
+            "description": "Your hand enters the water incorrectly, causing splash and reducing efficiency.",
+            "solutions": [
+                "Enter hand fingertips first, in line with your shoulder",
+                "Reach forward fully before pulling back",
+                "Keep your elbow higher than your hand during recovery"
+            ],
+            "relatedVideos": [
+                {"title": "Freestyle Arm Entry", "youtubeId": "OHjzgwUtfvU"}
+            ],
+            "confidence": min(edge_density * 3, 1.0)
+        })
+    
+    # Problem 3: Body Sinks While Swimming
+    motion_mag = opencv_results.get("motion_analysis", {}).get("average_motion_magnitude", 0)
+    if avg_bbox_y > 0.55 and motion_mag > 10:
+        problems.append({
+            "id": 1,
+            "title": "Body Sinks While Swimming",
+            "style": "general",
+            "description": "Your hips and legs drop below the surface, creating drag and making swimming difficult.",
+            "solutions": [
+                "Keep your head and eyes looking down at the bottom of the pool",
+                "Keep air in your lungs",
+                "Try to get your hips to come up out of the water"
+            ],
+            "relatedVideos": [
+                {"title": "Body Position Basics", "youtubeId": "wLSBRflOGCU"},
+                {"title": "Streamline", "youtubeId": "Ij0QS8R-F8s"}
+            ],
+            "confidence": min((avg_bbox_y - 0.5) * 2 + (motion_mag / 20), 1.0)
+        })
+    
+    # Sort by confidence
+    problems.sort(key=lambda x: x.get("confidence", 0), reverse=True)
+    return problems
+
+def calculate_average_bbox_y(detections: list, frame_height: int = 480) -> float:
+    """Calculate average Y position of bounding boxes (0-1, where 0 is top)"""
+    if not detections:
+        return 0.5
+
+    total_y = 0
+    count = 0
+
+    for detection in detections:
+        if "objects" in detection:
+            for obj in detection["objects"]:
+                if "bbox" in obj and len(obj["bbox"]) >= 4:
+                    center_y = (obj["bbox"][1] + obj["bbox"][3]) / 2
+                    total_y += center_y / frame_height
+                    count += 1
+
+    return total_y / count if count > 0 else 0.5
+
 def generate_conclusions(yolo_results: dict, opencv_results: dict) -> dict:
     """
     Generate conclusions from YOLO and OpenCV analysis
@@ -311,7 +398,12 @@ async def analyze_video(video: UploadFile = File(...)):
         opencv_results = analyze_with_opencv(frames)
         opencv_time = time.time() - opencv_start
         
-        # Step 4: Generate conclusions
+        # Step 4: Detect swimming problems
+        print("🔍 Detecting swimming problems...")
+        frame_height = frames[0].shape[0] if frames else 480
+        detected_problems = detect_swimming_problems(yolo_results, opencv_results, frame_height)
+        
+        # Step 5: Generate conclusions
         print("👁️ Generating conclusions...")
         conclusions = generate_conclusions(yolo_results, opencv_results)
         
@@ -340,6 +432,7 @@ async def analyze_video(video: UploadFile = File(...)):
             },
             "opencv_analysis": opencv_results,
             "conclusions": conclusions,
+            "detected_problems": detected_problems,
             "processing_metrics": {
                 "total_processing_time": round(total_time, 2),
                 "frame_processing_rate": round(len(frames) / total_time, 2),
