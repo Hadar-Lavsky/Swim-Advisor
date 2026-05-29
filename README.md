@@ -1,4 +1,4 @@
-#  Swim Advisor
+# Swim Advisor
 
 A modern web platform helping swimmers improve their technique through personalized learning paths, curated content, and future AI-powered video analysis.
 
@@ -16,6 +16,8 @@ A modern web platform helping swimmers improve their technique through personali
 - **Progress Tracking**: Monitor your improvement over time
 - **Social Features**: Connect with coaches and other swimmers
 
+
+## Getting Started
 
 ### Prerequisites
 - Node.js 16+
@@ -36,7 +38,6 @@ npm install
    - Create a Supabase project at [supabase.com](https://supabase.com)
    - Run the database migration: `supabase/migrations/001_initial_setup.sql`
    - Enable Google OAuth provider
-   -
 
 3. **Configure environment**:
 ```bash
