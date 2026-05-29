@@ -96,6 +96,8 @@ const VideoPreview = ({ file, onReset, onAnalyze, isAnalyzing, uploadProgress })
             onLoadedMetadata={handleVideoLoad}
             onTimeUpdate={handleTimeUpdate}
             onEnded={handleVideoEnd}
+            onPlay={() => setIsPlaying(true)}
+            onPause={() => setIsPlaying(false)}
             controls={false}
             playsInline
           >
@@ -165,7 +167,7 @@ const VideoPreview = ({ file, onReset, onAnalyze, isAnalyzing, uploadProgress })
               <Video className="w-5 h-5 text-gray-600" />
               <span className="font-medium text-gray-800">Format</span>
             </div>
-            <p className="text-gray-600">{file.type.split('/')[1].toUpperCase()}</p>
+            <p className="text-gray-600">{file.type.split('/')[1]?.toUpperCase() ?? file.name.split('.').pop().toUpperCase()}</p>
           </div>
         </div>
 
@@ -226,9 +228,9 @@ const VideoPreview = ({ file, onReset, onAnalyze, isAnalyzing, uploadProgress })
             🔧 Development Integration Point
           </h4>
           <p className="text-sm text-purple-700">
-            <strong>Backend Connection:</strong> This "Analyze" button will send the video file to 
-            the Python FastAPI endpoint at <code>/api/analyze</code> when the backend is integrated. 
-            The FastAPI server will use MediaPipe for pose detection and OpenCV for video processing.
+            <strong>Backend Connection:</strong> This "Analyze" button sends the video file to the
+            Python FastAPI endpoint at <code>/api/vision/analyze</code>. The server uses YOLO for
+            object detection and OpenCV for frame extraction, motion, and edge analysis.
           </p>
         </div>
       </div>

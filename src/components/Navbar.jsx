@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Youtube, Wrench, Video, Menu, X, User, LogOut, LogIn, Loader2, WavesLadder   } from 'lucide-react';
+import { Home, TvMinimalPlay, Wrench, Video, Menu, X, User, LogOut, LogIn, Loader2, WavesLadder, Eye   } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 
 const Navbar = () => {
   const location = useLocation();
@@ -13,9 +13,10 @@ const Navbar = () => {
   
   const navItems = [
     { path: '/', label: 'Home', icon: Home },
-    { path: '/content', label: 'Content', icon: Youtube },
+    { path: '/content', label: 'Content', icon: TvMinimalPlay },
     { path: '/learn', label: 'Fixes', icon: Wrench },
     { path: '/exercise', label: 'Program', icon: WavesLadder  },
+    { path: '/vision', label: 'Vision', icon: Eye },
    // { path: '/analyze', label: 'Analyze', icon: Video },
   ];
 

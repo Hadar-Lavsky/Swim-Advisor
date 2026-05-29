@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ChevronUp, Mail } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
+import ContactUs from '../components/ContactUs';
+import PageHeader from '../components/PageHeader';
 
 const AskPenguinPage = () => {
   const [activeTab, setActiveTab] = useState('parents');
@@ -14,7 +16,7 @@ const AskPenguinPage = () => {
     parents: [
       {
         question: "How do I choose the right goggles for my child?",
-        answer: "You can buy any decent brand, but the most important thing is fit and comfort. The goggles should cover the eyes exactly — not press too tight and not too wide. Make sure your child feels comfortable."
+        answer: "You can buy any decent brand, but the most important thing is fit and comfort. The goggles should cover the eyes exactly  not press too tight and not too wide. Make sure your child feels comfortable."
       },
       {
         question: "At what age should my child start learning to swim?",
@@ -50,7 +52,7 @@ const AskPenguinPage = () => {
     general: [
       {
         question: "What is Swim Advisor?",
-        answer: "Just swim smarter — structured guidance, and instructor insights."
+        answer: "Just swim smarter  structured guidance, and instructor insights."
       },
       {
         question: "What is the goal of Swim Advisor?",
@@ -71,16 +73,12 @@ const AskPenguinPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto mt-8 px-4">
-      {/* Hero Section with Penguin */}
-      <div className="text-center mb-12 mt-12">
-        <div className="flex justify-center mb-6">
-          
-        </div>
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-penguin-dark mb-4">
-          Ask the Penguin
-        </h1>
-        
-      </div>
+      <PageHeader
+        title="Ask the Penguin"
+        titleSize="large"
+        showIcon={false}
+        className="mt-12"
+      />
 
       {/* Tabs */}
       <div className="mb-8">
@@ -165,24 +163,10 @@ const AskPenguinPage = () => {
         </div>
       </div>
 
-      {/* Contact CTA */}
-      <div className="max-w-3xl mx-auto mb-12">
-        <div className="bg-gradient-to-r from-swim-blue-600 to-swim-blue-700 rounded-2xl p-8 text-center text-white shadow-xl">
-          <h3 className="text-2xl font-bold mb-3">
-            Didn't find what you were looking for?
-          </h3>
-          <p className="text-lg mb-6 opacity-90">
-            Feel free to reach out to us directly
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center space-x-2 bg-white text-swim-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-          >
-            <Mail size={20} />
-            <span>Contact Us</span>
-          </Link>
-        </div>
-      </div>
+      {/* Contact Section */}
+      <ContactUs 
+        title="Contact Us"
+        description="For questions about this privacy policy, contact us at:"/>
     </div>
   );
 };

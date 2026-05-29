@@ -17,6 +17,7 @@ import ComingSoonPage from './pages/ComingSoonPage';
 import FAQ from './pages/FAQ';
 import ProfilePage from './pages/ProfilePage';
 import ExercisePage from './pages/ExercisePage';
+import VisionPage from './pages/VisionPage';
 import { X } from 'lucide-react';
 
 // Inner component that has access to AuthContext
@@ -70,6 +71,7 @@ function AppContent() {
           <Route path="/content" element={<ContentPage />} />
           <Route path="/learn" element={<LearnPage />} />
           <Route path="/exercise" element={<ExercisePage />} />
+          <Route path="/vision" element={<VisionPage />} />
           <Route path="/analyze" element={<AnalyzePage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/about" element={<AboutPage/>} />

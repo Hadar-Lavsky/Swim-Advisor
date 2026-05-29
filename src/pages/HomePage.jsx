@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Search, BookOpen, Video, Waves, Droplet, Dumbbell, Clock, ArrowRight} from 'lucide-react';
-import logo from '../logo.png';
+import logo from '../images/logo.png';
 
 
 const HomePage = () => {
